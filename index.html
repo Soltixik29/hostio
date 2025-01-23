@@ -3,68 +3,251 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Načítání - Hostio</title>
+    <title>Hostio - Webhostingová služba</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
-        body {
-            background-color: #1a202c; /* Tailwind bg-gray-900 */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .menu-icon span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background: white;
+            margin: 5px auto;
+            transition: all 0.3s;
+        }
+
+        .menu-icon.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .menu-icon.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-icon.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        .fade-in {
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .header-bg {
+            background-image: url('https://via.placeholder.com/1920x800');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .header-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .lang-button {
+            padding: 8px 16px;
+            background-color: #2d3748;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
             color: white;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
+            transition: background-color 0.3s;
         }
 
-        .loader {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-top: 1rem;
-        }
-
-        .loader div {
-            width: 1rem;
-            height: 1rem;
-            margin: 0 0.2rem;
-            background-color: #3b82f6; /* Tailwind blue-500 */
-            border-radius: 50%;
-            animation: bounce 1.5s infinite ease-in-out;
-        }
-
-        .loader div:nth-child(2) {
-            animation-delay: 0.3s;
-        }
-
-        .loader div:nth-child(3) {
-            animation-delay: 0.6s;
-        }
-
-        @keyframes bounce {
-            0%, 80%, 100% {
-                transform: scale(0);
-            }
-            40% {
-                transform: scale(1);
-            }
+        .lang-button:hover {
+            background-color: #4a5568;
         }
     </style>
 </head>
-<body>
-    <div class="text-center">
-        <h1 class="text-4xl font-bold">Hostio</h1>
-        <div class="loader">
-            <div></div>
-            <div></div>
-            <div></div>
+<body class="bg-gray-900 text-white">
+
+    <!-- Navbar -->
+    <header class="header-bg text-white py-16 relative">
+        <div class="container mx-auto flex items-center justify-between p-4">
+            <!-- Logo -->
+            <div class="flex items-center space-x-2">
+                <img src="https://via.placeholder.com/40" alt="Hostio Logo" class="w-10 h-10">
+                <h1 class="text-2xl font-bold">Hostio</h1>
+            </div>
+
+            <!-- Desktop Navigation -->
+            <nav class="hidden md:flex space-x-6 items-center">
+                <a href="#features" class="hover:underline" data-lang="nav-features">Funkce</a>
+                <a href="#about" class="hover:underline" data-lang="nav-about">O nás</a>
+                <a href="#pricing" class="hover:underline" data-lang="nav-pricing">Ceník</a>
+                <a href="#partners" class="hover:underline" data-lang="nav-partners">Partneři</a>
+            </nav>
+
+            <!-- Language Selector -->
+            <div class="hidden md:flex space-x-4 items-center">
+                <button id="lang-cs" class="lang-button">
+                    <span>🇨🇿</span>
+                    <span>Čeština</span>
+                </button>
+                <button id="lang-en" class="lang-button">
+                    <span>🇬🇧</span>
+                    <span>English</span>
+                </button>
+            </div>
+
+            <!-- Burger Menu -->
+            <div class="md:hidden">
+                <div class="menu-icon" id="burger-menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
         </div>
-    </div>
+
+        <!-- Mobile Navigation -->
+        <nav id="mobile-nav" class="hidden bg-gray-800 md:hidden">
+            <ul class="flex flex-col space-y-4 p-4">
+                <li><a href="#features" class="hover:underline" data-lang="nav-features">Funkce</a></li>
+                <li><a href="#about" class="hover:underline" data-lang="nav-about">O nás</a></li>
+                <li><a href="#pricing" class="hover:underline" data-lang="nav-pricing">Ceník</a></li>
+                <li><a href="#partners" class="hover:underline" data-lang="nav-partners">Partneři</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="text-center py-16 bg-gray-800 fade-in">
+        <h2 class="text-4xl font-bold mb-4" data-lang="hero-title">Rychlý a spolehlivý webhosting</h2>
+        <p class="text-lg mb-6" data-lang="hero-subtitle">Vaše webové stránky na dosah ruky s Hostio.</p>
+        <a href="#pricing" class="px-6 py-3 bg-blue-600 text-white rounded-md hover:bg-blue-500" data-lang="hero-button">
+            Zjistit více
+        </a>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-16 fade-in">
+        <div class="container mx-auto">
+            <h3 class="text-3xl font-bold text-center mb-8" data-lang="features-title">Proč si vybrat Hostio?</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="text-center">
+                    <i class="fas fa-server text-blue-500 text-4xl mb-4"></i>
+                    <h4 class="text-xl font-semibold mb-2" data-lang="feature1-title">Spolehlivé servery</h4>
+                    <p data-lang="feature1-desc">99,9% dostupnost díky moderní infrastruktuře.</p>
+                </div>
+                <div class="text-center">
+                    <i class="fas fa-lock text-blue-500 text-4xl mb-4"></i>
+                    <h4 class="text-xl font-semibold mb-2" data-lang="feature2-title">Zabezpečení</h4>
+                    <p data-lang="feature2-desc">Vaše data jsou v bezpečí díky špičkovému šifrování.</p>
+                </div>
+                <div class="text-center">
+                    <i class="fas fa-headset text-blue-500 text-4xl mb-4"></i>
+                    <h4 class="text-xl font-semibold mb-2" data-lang="feature3-title">Podpora 24/7</h4>
+                    <p data-lang="feature3-desc">Náš tým je tu pro vás kdykoliv.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-16 fade-in">
+        <div class="container mx-auto text-center">
+            <h3 class="text-3xl font-bold mb-4" data-lang="about-title">O nás</h3>
+            <p data-lang="about-desc">Jsme tým odborníků, který se specializuje na poskytování spolehlivého a bezpečného webhostingu pro všechny typy podniků.</p>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="py-16 bg-gray-800 fade-in">
+        <div class="container mx-auto text-center">
+            <h3 class="text-3xl font-bold mb-4" data-lang="pricing-title">Ceník</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-blue-600 p-6 rounded-lg">
+                    <h4 class="text-xl font-semibold mb-4" data-lang="pricing-basic">Základní</h4>
+                    <p class="text-lg" data-lang="pricing-basic-desc">Ideální pro malé weby.</p>
+                    <p class="text-2xl font-bold" data-lang="pricing-basic-price">199 Kč/měsíc</p>
+                </div>
+                <div class="bg-blue-600 p-6 rounded-lg">
+                    <h4 class="text-xl font-semibold mb-4" data-lang="pricing-advanced">Pokročilý</h4>
+                    <p class="text-lg" data-lang="pricing-advanced-desc">Pro střední a velké projekty.</p>
+                    <p class="text-2xl font-bold" data-lang="pricing-advanced-price">399 Kč/měsíc</p>
+                </div>
+                <div class="bg-blue-600 p-6 rounded-lg">
+                    <h4 class="text-xl font-semibold mb-4" data-lang="pricing-premium">Prémiový</h4>
+                    <p class="text-lg" data-lang="pricing-premium-desc">Pro náročné klienty s vysokými požadavky.</p>
+                    <p class="text-2xl font-bold" data-lang="pricing-premium-price">599 Kč/měsíc</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partners Section -->
+    <section id="partners" class="py-16 fade-in">
+        <div class="container mx-auto text-center">
+            <h3 class="text-3xl font-bold mb-4" data-lang="partners-title">Naši partneři</h3>
+            <div class="flex justify-center space-x-8">
+                <img src="https://via.placeholder.com/100" alt="Partner 1" class="w-24 h-24">
+                <img src="https://via.placeholder.com/100" alt="Partner 2" class="w-24 h-24">
+                <img src="https://via.placeholder.com/100" alt="Partner 3" class="w-24 h-24">
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 py-8 text-center">
+        <p>&copy; 2025 Hostio. Všechna práva vyhrazena.</p>
+    </footer>
 
     <script>
-        // Přesměrování na /home po 3 sekundách
-        setTimeout(() => {
-            window.location.href = "/home";
-        }, 1000);
+        const burgerMenu = document.getElementById("burger-menu");
+        const mobileNav = document.getElementById("mobile-nav");
+
+        // Toggle burger menu
+        burgerMenu.addEventListener("click", () => {
+            burgerMenu.classList.toggle("active");
+            mobileNav.classList.toggle("hidden");
+        });
+
+        // Load translations
+        async function loadTranslations(lang) {
+            const response = await fetch("lang.json");
+            const translations = await response.json();
+            const elements = document.querySelectorAll("[data-lang]");
+            elements.forEach(el => {
+                const key = el.getAttribute("data-lang");
+                if (translations[lang][key]) {
+                    el.textContent = translations[lang][key];
+                }
+            });
+        }
+
+        // Set language
+        function setLanguage(lang) {
+            localStorage.setItem("lang", lang);
+            loadTranslations(lang);
+            document.body.classList.add("fade-in");
+        }
+
+        // Detect default language
+        const defaultLang = localStorage.getItem("lang") || (navigator.language.startsWith("cs") ? "cs" : "en");
+        setLanguage(defaultLang);
+
+        document.getElementById("lang-cs").addEventListener("click", () => setLanguage("cs"));
+        document.getElementById("lang-en").addEventListener("click", () => setLanguage("en"));
     </script>
 </body>
 </html>
