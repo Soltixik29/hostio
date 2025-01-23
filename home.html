@@ -10,9 +10,32 @@
         html {
             scroll-behavior: smooth;
         }
+
+        .menu-icon span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background: white;
+            margin: 5px auto;
+            transition: all 0.3s;
+        }
+
+        .menu-icon.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .menu-icon.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-icon.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
         .fade-in {
             animation: fadeIn 0.5s ease-in-out;
         }
+
         @keyframes fadeIn {
             from {
                 opacity: 0;
@@ -25,18 +48,56 @@
 </head>
 <body class="bg-gray-900 text-white">
 
-    <!-- Header -->
-    <header class="bg-blue-700">
+    <!-- Navbar -->
+    <header class="bg-blue-700 sticky top-0 z-50 shadow-lg">
         <div class="container mx-auto flex items-center justify-between p-4">
-            <h1 class="text-2xl font-bold" data-lang="title">Hostio</h1>
-            <nav>
-                <ul class="flex space-x-4">
-                    <li><a href="#features" class="hover:underline" data-lang="features-link">Funkce</a></li>
-                    <li><a href="#pricing" class="hover:underline" data-lang="pricing-link">Ceník</a></li>
-                    <li><a href="#contact" class="hover:underline" data-lang="contact-link">Kontakt</a></li>
-                </ul>
+            <!-- Logo -->
+            <div class="flex items-center space-x-2">
+                <img src="https://via.placeholder.com/40" alt="Hostio Logo" class="w-10 h-10">
+                <h1 class="text-2xl font-bold">Hostio</h1>
+            </div>
+
+            <!-- Desktop Navigation -->
+            <nav class="hidden md:flex space-x-6 items-center">
+                <a href="#features" class="hover:underline" data-lang="nav-features">Funkce</a>
+                <a href="#about" class="hover:underline" data-lang="nav-about">O nás</a>
+                <a href="#pricing" class="hover:underline" data-lang="nav-pricing">Ceník</a>
+                <a href="#partners" class="hover:underline" data-lang="nav-partners">Partneři</a>
+                <a href="#websites" class="hover:underline" data-lang="nav-websites">Weby</a>
             </nav>
+
+            <!-- Language Selector -->
+            <div class="hidden md:flex space-x-4 items-center">
+                <button id="lang-cs" class="flex items-center space-x-2 p-2 bg-gray-800 rounded-md hover:bg-gray-700 transition">
+                    <span>🇨🇿</span>
+                    <span>Čeština</span>
+                </button>
+                <button id="lang-en" class="flex items-center space-x-2 p-2 bg-gray-800 rounded-md hover:bg-gray-700 transition">
+                    <span>🇬🇧</span>
+                    <span>English</span>
+                </button>
+            </div>
+
+            <!-- Burger Menu -->
+            <div class="md:hidden">
+                <div class="menu-icon" id="burger-menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
         </div>
+
+        <!-- Mobile Navigation -->
+        <nav id="mobile-nav" class="hidden bg-gray-800 md:hidden">
+            <ul class="flex flex-col space-y-4 p-4">
+                <li><a href="#features" class="hover:underline" data-lang="nav-features">Funkce</a></li>
+                <li><a href="#about" class="hover:underline" data-lang="nav-about">O nás</a></li>
+                <li><a href="#pricing" class="hover:underline" data-lang="nav-pricing">Ceník</a></li>
+                <li><a href="#partners" class="hover:underline" data-lang="nav-partners">Partneři</a></li>
+                <li><a href="#websites" class="hover:underline" data-lang="nav-websites">Weby</a></li>
+            </ul>
+        </nav>
     </header>
 
     <!-- Hero Section -->
@@ -72,64 +133,22 @@
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="bg-blue-700 py-6">
-        <div class="container mx-auto flex justify-between items-center">
-            <p>© 2025 Hostio. Všechna práva vyhrazena.</p>
-            <div class="flex items-center space-x-4">
-                <span data-lang="language-label">Jazyk:</span>
-                <button id="lang-cs" class="flex items-center space-x-2 p-2 bg-gray-800 rounded-md hover:bg-gray-700 transition">
-                    <span>🇨🇿</span>
-                    <span class="hidden md:inline">Čeština</span>
-                </button>
-                <button id="lang-en" class="flex items-center space-x-2 p-2 bg-gray-800 rounded-md hover:bg-gray-700 transition">
-                    <span>🇬🇧</span>
-                    <span class="hidden md:inline">English</span>
-                </button>
-            </div>
-        </div>
-    </footer>
+    <!-- Add other sections (About, Pricing, Partners, Websites) -->
 
     <script>
-        const translations = {
-            cs: {
-                "title": "Hostio",
-                "features-link": "Funkce",
-                "pricing-link": "Ceník",
-                "contact-link": "Kontakt",
-                "hero-title": "Rychlý a spolehlivý webhosting",
-                "hero-subtitle": "Vaše webové stránky na dosah ruky s Hostio.",
-                "hero-button": "Zjistit více",
-                "features-title": "Proč si vybrat Hostio?",
-                "feature1-title": "Spolehlivé servery",
-                "feature1-desc": "99,9% dostupnost díky moderní infrastruktuře.",
-                "feature2-title": "Zabezpečení",
-                "feature2-desc": "Vaše data jsou v bezpečí díky špičkovému šifrování.",
-                "feature3-title": "Podpora 24/7",
-                "feature3-desc": "Náš tým je tu pro vás kdykoliv.",
-                "language-label": "Jazyk:"
-            },
-            en: {
-                "title": "Hostio",
-                "features-link": "Features",
-                "pricing-link": "Pricing",
-                "contact-link": "Contact",
-                "hero-title": "Fast and Reliable Web Hosting",
-                "hero-subtitle": "Your website within reach with Hostio.",
-                "hero-button": "Learn More",
-                "features-title": "Why Choose Hostio?",
-                "feature1-title": "Reliable Servers",
-                "feature1-desc": "99.9% uptime thanks to modern infrastructure.",
-                "feature2-title": "Security",
-                "feature2-desc": "Your data is safe with top-notch encryption.",
-                "feature3-title": "24/7 Support",
-                "feature3-desc": "Our team is here for you anytime.",
-                "language-label": "Language:"
-            }
-        };
+        const burgerMenu = document.getElementById("burger-menu");
+        const mobileNav = document.getElementById("mobile-nav");
 
-        const setLanguage = (lang) => {
-            localStorage.setItem("lang", lang);
+        // Toggle burger menu
+        burgerMenu.addEventListener("click", () => {
+            burgerMenu.classList.toggle("active");
+            mobileNav.classList.toggle("hidden");
+        });
+
+        // Load translations
+        async function loadTranslations(lang) {
+            const response = await fetch("lang.json");
+            const translations = await response.json();
             const elements = document.querySelectorAll("[data-lang]");
             elements.forEach(el => {
                 const key = el.getAttribute("data-lang");
@@ -137,20 +156,20 @@
                     el.textContent = translations[lang][key];
                 }
             });
-            document.body.classList.add("fade-in");
-            setTimeout(() => document.body.classList.remove("fade-in"), 500);
-        };
+        }
 
-        const detectLanguage = () => {
-            const userLang = navigator.language.startsWith("cs") ? "cs" : "en";
-            return localStorage.getItem("lang") || userLang;
-        };
+        // Set language
+        function setLanguage(lang) {
+            localStorage.setItem("lang", lang);
+            loadTranslations(lang);
+        }
+
+        // Detect default language
+        const defaultLang = localStorage.getItem("lang") || (navigator.language.startsWith("cs") ? "cs" : "en");
+        setLanguage(defaultLang);
 
         document.getElementById("lang-cs").addEventListener("click", () => setLanguage("cs"));
         document.getElementById("lang-en").addEventListener("click", () => setLanguage("en"));
-
-        const savedLang = detectLanguage();
-        setLanguage(savedLang);
     </script>
 </body>
 </html>
