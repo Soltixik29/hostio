@@ -23,7 +23,16 @@
     "pricing-standard-desc": "Pro střední weby s většími nároky.",
     "pricing-premium": "Premium",
     "pricing-premium-price": "299 Kč / měsíc",
-    "pricing-premium-desc": "Pro náročné projekty s vysokou návštěvností."
+    "pricing-premium-desc": "Pro náročné projekty s vysokou návštěvností.",
+    "pricing-advantage1": "Rychlost a výkon",
+    "pricing-advantage2": "Špičkové zabezpečení",
+    "pricing-advantage3": "Podpora 24/7",
+    "footer-text": "© 2025 Hostio. Všechna práva vyhrazena.",
+    "nav-features": "Funkce",
+    "nav-about": "O nás",
+    "nav-pricing": "Ceník",
+    "nav-partners": "Partneři",
+    "lang-select": "Vyberte jazyk"
   },
   "en": {
     "hero-title": "Fast and reliable web hosting",
@@ -49,6 +58,15 @@
     "pricing-standard-desc": "For medium-sized websites with higher demands.",
     "pricing-premium": "Premium",
     "pricing-premium-price": "$15 / month",
-    "pricing-premium-desc": "For demanding projects with high traffic."
+    "pricing-premium-desc": "For demanding projects with high traffic.",
+    "pricing-advantage1": "Speed and Performance",
+    "pricing-advantage2": "Top-tier Security",
+    "pricing-advantage3": "24/7 Support",
+    "footer-text": "© 2025 Hostio. All rights reserved.",
+    "nav-features": "Features",
+    "nav-about": "About Us",
+    "nav-pricing": "Pricing",
+    "nav-partners": "Partners",
+    "lang-select": "Select Language"
   }
 }
