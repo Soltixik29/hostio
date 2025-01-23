@@ -33,7 +33,7 @@
         }
 
         .fade-in {
-            animation: fadeIn 0.5s ease-in-out;
+            animation: fadeIn 1s ease-in-out;
         }
 
         @keyframes fadeIn {
@@ -46,7 +46,7 @@
         }
 
         .fade-in-section {
-            animation: fadeInSection 0.5s ease-in-out;
+            animation: fadeInSection 1s ease-in-out;
         }
 
         @keyframes fadeInSection {
@@ -64,7 +64,7 @@
 <body class="bg-gray-900 text-white">
 
     <!-- Navbar -->
-    <header class="bg-blue-700 sticky top-0 z-50 shadow-lg">
+    <header class="bg-blue-700 sticky top-0 z-50 shadow-lg fade-in">
         <div class="container mx-auto flex items-center justify-between p-4">
             <!-- Logo -->
             <div class="flex items-center space-x-2">
@@ -80,17 +80,6 @@
                 <a href="#partners" class="hover:underline" data-lang="nav-partners">Partneři</a>
             </nav>
 
-            <!-- Language Selector -->
-            <div class="hidden md:flex space-x-4 items-center">
-                <button id="lang-cs" class="flex items-center space-x-2 p-2 bg-gray-800 rounded-md hover:bg-gray-700 transition">
-                    <span>🇨🇿</span>
-                    <span>Čeština</span>
-                </button>
-                <button id="lang-en" class="flex items-center space-x-2 p-2 bg-gray-800 rounded-md hover:bg-gray-700 transition">
-                    <span>🇬🇧</span>
-                    <span>English</span>
-                </button>
-            </div>
 
             <!-- Burger Menu -->
             <div class="md:hidden">
@@ -146,157 +135,90 @@
         </div>
     </section>
 
-    <!-- About Section -->
-    <section id="about" class="py-16 bg-gray-800 fade-in-section">
-        <div class="container mx-auto text-center">
-            <h3 class="text-3xl font-bold mb-4" data-lang="about-title">O nás</h3>
-            <p data-lang="about-desc">Jsme tým odborníků, kteří se specializují na poskytování kvalitního a spolehlivého webhostingu. Naším cílem je nabídnout služby, které jsou rychlé, bezpečné a dostupné pro každého.</p>
-        </div>
-    </section>
-
-    <!-- Partners Section -->
-    <section id="partners" class="py-16 fade-in-section">
-        <div class="container mx-auto text-center">
-            <h3 class="text-3xl font-bold mb-4" data-lang="partners-title">Naši partneři</h3>
-            <div class="flex justify-center space-x-8">
-                <img src="https://via.placeholder.com/150" alt="Partner 1" class="w-32 h-32 rounded-full border-4 border-blue-500">
-                <img src="https://via.placeholder.com/150" alt="Partner 2" class="w-32 h-32 rounded-full border-4 border-blue-500">
-                <img src="https://via.placeholder.com/150" alt="Partner 3" class="w-32 h-32 rounded-full border-4 border-blue-500">
-            </div>
-            <p data-lang="partners-desc" class="mt-4">Spolupracujeme s předními technologickými firmami a poskytovateli služeb, abychom vám poskytli nejlepší hostingové řešení.</p>
-        </div>
-    </section>
-
     <!-- Pricing Section -->
     <section id="pricing" class="py-16 bg-gray-800 fade-in-section">
         <div class="container mx-auto text-center">
-            <h3 class="text-3xl font-bold mb-4" data-lang="pricing-title">Ceník</h3>
+            <h3 class="text-3xl font-bold mb-8" data-lang="pricing-title">Ceník</h3>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="bg-gray-700 p-6 rounded-lg">
+                <div class="bg-gray-700 p-6 rounded-lg shadow-lg">
                     <h4 class="text-xl font-semibold mb-4" data-lang="pricing-basic">Základní</h4>
                     <p class="text-2xl font-bold mb-4" data-lang="pricing-basic-price">99 Kč / měsíc</p>
                     <p data-lang="pricing-basic-desc">Základní hosting pro malé weby.</p>
+                    <ul class="mt-4 space-y-2 text-left">
+                        <li><i class="fas fa-check-circle text-green-500"></i> <span data-lang="pricing-advantage1">Rychlost a výkon</span></li>
+                        <li><i class="fas fa-check-circle text-green-500"></i> <span data-lang="pricing-advantage2">Špičkové zabezpečení</span></li>
+                    </ul>
+                    <button class="mt-4 px-6 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-500">Zakoupit</button>
                 </div>
-                <div class="bg-gray-700 p-6 rounded-lg">
+                <div class="bg-gray-700 p-6 rounded-lg shadow-lg">
                     <h4 class="text-xl font-semibold mb-4" data-lang="pricing-standard">Standard</h4>
                     <p class="text-2xl font-bold mb-4" data-lang="pricing-standard-price">199 Kč / měsíc</p>
                     <p data-lang="pricing-standard-desc">Pro střední weby s většími nároky.</p>
+                    <ul class="mt-4 space-y-2 text-left">
+                        <li><i class="fas fa-check-circle text-green-500"></i> <span data-lang="pricing-advantage1">Rychlost a výkon</span></li>
+                        <li><i class="fas fa-check-circle text-green-500"></i> <span data-lang="pricing-advantage2">Špičkové zabezpečení</span></li>
+                        <li><i class="fas fa-check-circle text-green-500"></i> <span data-lang="pricing-advantage3">Podpora 24/7</span></li>
+                    </ul>
+                    <button class="mt-4 px-6 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-500">Zakoupit</button>
                 </div>
-                <div class="bg-gray-700 p-6 rounded-lg">
+                <div class="bg-gray-700 p-6 rounded-lg shadow-lg">
                     <h4 class="text-xl font-semibold mb-4" data-lang="pricing-premium">Premium</h4>
                     <p class="text-2xl font-bold mb-4" data-lang="pricing-premium-price">299 Kč / měsíc</p>
                     <p data-lang="pricing-premium-desc">Pro náročné projekty s vysokou návštěvností.</p>
+                    <ul class="mt-4 space-y-2 text-left">
+                        <li><i class="fas fa-check-circle text-green-500"></i> <span data-lang="pricing-advantage1">Rychlost a výkon</span></li>
+                        <li><i class="fas fa-check-circle text-green-500"></i> <span data-lang="pricing-advantage2">Špičkové zabezpečení</span></li>
+                        <li><i class="fas fa-check-circle text-green-500"></i> <span data-lang="pricing-advantage3">Podpora 24/7</span></li>
+                    </ul>
+                    <button class="mt-4 px-6 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-500">Zakoupit</button>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-blue-700 py-8 mt-16">
-        <div class="container mx-auto flex flex-col md:flex-row justify-between items-center">
-            <div class="text-center md:text-left">
-                <p>&copy; 2025 Hostio. Všechna práva vyhrazena.</p>
-            </div>
-
-            <!-- Language Selector -->
-            <div class="mt-4 md:mt-0 flex space-x-4 items-center">
-                <button id="lang-cs-footer" class="flex items-center space-x-2 p-2 bg-gray-800 rounded-md hover:bg-gray-700 transition">
-                    <span>🇨🇿</span>
-                    <span>Čeština</span>
-                </button>
-                <button id="lang-en-footer" class="flex items-center space-x-2 p-2 bg-gray-800 rounded-md hover:bg-gray-700 transition">
-                    <span>🇬🇧</span>
-                    <span>English</span>
-                </button>
-            </div>
+    <footer class="py-8 bg-gray-800 text-center fade-in-section">
+        <p data-lang="footer-text">© 2025 Hostio. Všechna práva vyhrazena.</p>
+        <div class="mt-4">
+            <button id="lang-cs" class="p-2 bg-gray-700 rounded-md text-white">🇨🇿</button>
+            <button id="lang-en" class="p-2 bg-gray-700 rounded-md text-white">🇬🇧</button>
         </div>
     </footer>
 
     <script>
-        // Language switching functionality
-        const langCsBtn = document.getElementById("lang-cs");
-        const langEnBtn = document.getElementById("lang-en");
-        const langCsFooterBtn = document.getElementById("lang-cs-footer");
-        const langEnFooterBtn = document.getElementById("lang-en-footer");
+        // Function to change language
+        function loadLanguage(lang) {
+            fetch('lang.json')
+                .then(response => response.json())
+                .then(data => {
+                    const translations = data[lang];
+                    document.querySelectorAll('[data-lang]').forEach(element => {
+                        const key = element.getAttribute('data-lang');
+                        if (translations[key]) {
+                            element.innerHTML = translations[key];
+                        }
+                    });
 
-        function changeLanguage(lang) {
-            // Simulate language change by changing text content (real implementation would load from JSON)
-            const elements = document.querySelectorAll("[data-lang]");
+                    // Change page title
+                    document.title = translations["hero-title"];
 
-            elements.forEach((el) => {
-                const key = el.getAttribute("data-lang");
-                if (lang === "en") {
-                    el.textContent = translations.en[key] || el.textContent;
-                } else {
-                    el.textContent = translations.cs[key] || el.textContent;
-                }
-            });
+                    // Change footer text
+                    document.querySelector('footer p').innerHTML = translations["footer-text"];
+                });
         }
 
-        // Language switch event listeners
-        langCsBtn.addEventListener("click", () => changeLanguage("cs"));
-        langEnBtn.addEventListener("click", () => changeLanguage("en"));
-        langCsFooterBtn.addEventListener("click", () => changeLanguage("cs"));
-        langEnFooterBtn.addEventListener("click", () => changeLanguage("en"));
+        // Set default language to Czech
+        loadLanguage('cs');
 
-        // Dummy translations (you can replace with actual JSON loading)
-        const translations = {
-            cs: {
-                "hero-title": "Rychlý a spolehlivý webhosting",
-                "hero-subtitle": "Vaše webové stránky na dosah ruky s Hostio.",
-                "hero-button": "Zjistit více",
-                "features-title": "Proč si vybrat Hostio?",
-                "feature1-title": "Spolehlivé servery",
-                "feature1-desc": "99,9% dostupnost díky moderní infrastruktuře.",
-                "feature2-title": "Zabezpečení",
-                "feature2-desc": "Vaše data jsou v bezpečí díky špičkovému šifrování.",
-                "feature3-title": "Podpora 24/7",
-                "feature3-desc": "Náš tým je tu pro vás kdykoliv.",
-                "about-title": "O nás",
-                "about-desc": "Jsme tým odborníků, kteří se specializují na poskytování kvalitního a spolehlivého webhostingu. Naším cílem je nabídnout služby, které jsou rychlé, bezpečné a dostupné pro každého.",
-                "partners-title": "Naši partneři",
-                "partners-desc": "Spolupracujeme s předními technologickými firmami a poskytovateli služeb, abychom vám poskytli nejlepší hostingové řešení.",
-                "pricing-title": "Ceník",
-                "pricing-basic": "Základní",
-                "pricing-basic-price": "99 Kč / měsíc",
-                "pricing-basic-desc": "Základní hosting pro malé weby.",
-                "pricing-standard": "Standard",
-                "pricing-standard-price": "199 Kč / měsíc",
-                "pricing-standard-desc": "Pro střední weby s většími nároky.",
-                "pricing-premium": "Premium",
-                "pricing-premium-price": "299 Kč / měsíc",
-                "pricing-premium-desc": "Pro náročné projekty s vysokou návštěvností."
-            },
-            en: {
-                "hero-title": "Fast and reliable web hosting",
-                "hero-subtitle": "Your websites at your fingertips with Hostio.",
-                "hero-button": "Learn More",
-                "features-title": "Why choose Hostio?",
-                "feature1-title": "Reliable Servers",
-                "feature1-desc": "99.9% uptime with modern infrastructure.",
-                "feature2-title": "Security",
-                "feature2-desc": "Your data is safe with top-notch encryption.",
-                "feature3-title": "24/7 Support",
-                "feature3-desc": "Our team is here for you anytime.",
-                "about-title": "About Us",
-                "about-desc": "We are a team of experts specializing in providing high-quality and reliable web hosting. Our goal is to offer services that are fast, secure, and accessible to everyone.",
-                "partners-title": "Our Partners",
-                "partners-desc": "We collaborate with leading tech companies and service providers to offer you the best hosting solutions.",
-                "pricing-title": "Pricing",
-                "pricing-basic": "Basic",
-                "pricing-basic-price": "$5 / month",
-                "pricing-basic-desc": "Basic hosting for small websites.",
-                "pricing-standard": "Standard",
-                "pricing-standard-price": "$10 / month",
-                "pricing-standard-desc": "For medium-sized websites with higher demands.",
-                "pricing-premium": "Premium",
-                "pricing-premium-price": "$15 / month",
-                "pricing-premium-desc": "For demanding projects with high traffic."
-            }
-        };
+        // Event listeners for language buttons
+        document.getElementById('lang-cs').addEventListener('click', () => loadLanguage('cs'));
+        document.getElementById('lang-en').addEventListener('click', () => loadLanguage('en'));
 
-        // Initial language load
-        changeLanguage("cs");
+        // Toggle mobile menu
+        document.getElementById('burger-menu').addEventListener('click', () => {
+            document.getElementById('mobile-nav').classList.toggle('hidden');
+            document.querySelector('.menu-icon').classList.toggle('active');
+        });
     </script>
 </body>
 </html>
