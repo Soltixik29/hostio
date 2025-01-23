@@ -1,0 +1,36 @@
+{
+    "cs": {
+        "nav-features": "Funkce",
+        "nav-about": "O nás",
+        "nav-pricing": "Ceník",
+        "nav-partners": "Partneři",
+        "nav-websites": "Weby",
+        "hero-title": "Rychlý a spolehlivý webhosting",
+        "hero-subtitle": "Vaše webové stránky na dosah ruky s Hostio.",
+        "hero-button": "Zjistit více",
+        "features-title": "Proč si vybrat Hostio?",
+        "feature1-title": "Spolehlivé servery",
+        "feature1-desc": "99,9% dostupnost díky moderní infrastruktuře.",
+        "feature2-title": "Zabezpečení",
+        "feature2-desc": "Vaše data jsou v bezpečí díky špičkovému šifrování.",
+        "feature3-title": "Podpora 24/7",
+        "feature3-desc": "Náš tým je tu pro vás kdykoliv."
+    },
+    "en": {
+        "nav-features": "Features",
+        "nav-about": "About Us",
+        "nav-pricing": "Pricing",
+        "nav-partners": "Partners",
+        "nav-websites": "Websites",
+        "hero-title": "Fast and Reliable Web Hosting",
+        "hero-subtitle": "Your website within reach with Hostio.",
+        "hero-button": "Learn More",
+        "features-title": "Why Choose Hostio?",
+        "feature1-title": "Reliable Servers",
+        "feature1-desc": "99.9% uptime thanks to modern infrastructure.",
+        "feature2-title": "Security",
+        "feature2-desc": "Your data is safe with top-notch encryption.",
+        "feature3-title": "24/7 Support",
+        "feature3-desc": "Our team is here for you anytime."
+    }
+}
