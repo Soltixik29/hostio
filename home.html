@@ -44,6 +44,21 @@
                 opacity: 1;
             }
         }
+
+        .fade-in-section {
+            animation: fadeInSection 0.5s ease-in-out;
+        }
+
+        @keyframes fadeInSection {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
     </style>
 </head>
 <body class="bg-gray-900 text-white">
@@ -63,7 +78,6 @@
                 <a href="#about" class="hover:underline" data-lang="nav-about">O nás</a>
                 <a href="#pricing" class="hover:underline" data-lang="nav-pricing">Ceník</a>
                 <a href="#partners" class="hover:underline" data-lang="nav-partners">Partneři</a>
-                <a href="#websites" class="hover:underline" data-lang="nav-websites">Weby</a>
             </nav>
 
             <!-- Language Selector -->
@@ -95,13 +109,12 @@
                 <li><a href="#about" class="hover:underline" data-lang="nav-about">O nás</a></li>
                 <li><a href="#pricing" class="hover:underline" data-lang="nav-pricing">Ceník</a></li>
                 <li><a href="#partners" class="hover:underline" data-lang="nav-partners">Partneři</a></li>
-                <li><a href="#websites" class="hover:underline" data-lang="nav-websites">Weby</a></li>
             </ul>
         </nav>
     </header>
 
     <!-- Hero Section -->
-    <section class="text-center py-16 bg-gray-800">
+    <section class="text-center py-16 bg-gray-800 fade-in-section">
         <h2 class="text-4xl font-bold mb-4" data-lang="hero-title">Rychlý a spolehlivý webhosting</h2>
         <p class="text-lg mb-6" data-lang="hero-subtitle">Vaše webové stránky na dosah ruky s Hostio.</p>
         <a href="#pricing" class="px-6 py-3 bg-blue-600 text-white rounded-md hover:bg-blue-500" data-lang="hero-button">
@@ -110,7 +123,7 @@
     </section>
 
     <!-- Features Section -->
-    <section id="features" class="py-16">
+    <section id="features" class="py-16 fade-in-section">
         <div class="container mx-auto">
             <h3 class="text-3xl font-bold text-center mb-8" data-lang="features-title">Proč si vybrat Hostio?</h3>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -133,43 +146,157 @@
         </div>
     </section>
 
-    <!-- Add other sections (About, Pricing, Partners, Websites) -->
+    <!-- About Section -->
+    <section id="about" class="py-16 bg-gray-800 fade-in-section">
+        <div class="container mx-auto text-center">
+            <h3 class="text-3xl font-bold mb-4" data-lang="about-title">O nás</h3>
+            <p data-lang="about-desc">Jsme tým odborníků, kteří se specializují na poskytování kvalitního a spolehlivého webhostingu. Naším cílem je nabídnout služby, které jsou rychlé, bezpečné a dostupné pro každého.</p>
+        </div>
+    </section>
+
+    <!-- Partners Section -->
+    <section id="partners" class="py-16 fade-in-section">
+        <div class="container mx-auto text-center">
+            <h3 class="text-3xl font-bold mb-4" data-lang="partners-title">Naši partneři</h3>
+            <div class="flex justify-center space-x-8">
+                <img src="https://via.placeholder.com/150" alt="Partner 1" class="w-32 h-32 rounded-full border-4 border-blue-500">
+                <img src="https://via.placeholder.com/150" alt="Partner 2" class="w-32 h-32 rounded-full border-4 border-blue-500">
+                <img src="https://via.placeholder.com/150" alt="Partner 3" class="w-32 h-32 rounded-full border-4 border-blue-500">
+            </div>
+            <p data-lang="partners-desc" class="mt-4">Spolupracujeme s předními technologickými firmami a poskytovateli služeb, abychom vám poskytli nejlepší hostingové řešení.</p>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="py-16 bg-gray-800 fade-in-section">
+        <div class="container mx-auto text-center">
+            <h3 class="text-3xl font-bold mb-4" data-lang="pricing-title">Ceník</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-gray-700 p-6 rounded-lg">
+                    <h4 class="text-xl font-semibold mb-4" data-lang="pricing-basic">Základní</h4>
+                    <p class="text-2xl font-bold mb-4" data-lang="pricing-basic-price">99 Kč / měsíc</p>
+                    <p data-lang="pricing-basic-desc">Základní hosting pro malé weby.</p>
+                </div>
+                <div class="bg-gray-700 p-6 rounded-lg">
+                    <h4 class="text-xl font-semibold mb-4" data-lang="pricing-standard">Standard</h4>
+                    <p class="text-2xl font-bold mb-4" data-lang="pricing-standard-price">199 Kč / měsíc</p>
+                    <p data-lang="pricing-standard-desc">Pro střední weby s většími nároky.</p>
+                </div>
+                <div class="bg-gray-700 p-6 rounded-lg">
+                    <h4 class="text-xl font-semibold mb-4" data-lang="pricing-premium">Premium</h4>
+                    <p class="text-2xl font-bold mb-4" data-lang="pricing-premium-price">299 Kč / měsíc</p>
+                    <p data-lang="pricing-premium-desc">Pro náročné projekty s vysokou návštěvností.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-blue-700 py-8 mt-16">
+        <div class="container mx-auto flex flex-col md:flex-row justify-between items-center">
+            <div class="text-center md:text-left">
+                <p>&copy; 2025 Hostio. Všechna práva vyhrazena.</p>
+            </div>
+
+            <!-- Language Selector -->
+            <div class="mt-4 md:mt-0 flex space-x-4 items-center">
+                <button id="lang-cs-footer" class="flex items-center space-x-2 p-2 bg-gray-800 rounded-md hover:bg-gray-700 transition">
+                    <span>🇨🇿</span>
+                    <span>Čeština</span>
+                </button>
+                <button id="lang-en-footer" class="flex items-center space-x-2 p-2 bg-gray-800 rounded-md hover:bg-gray-700 transition">
+                    <span>🇬🇧</span>
+                    <span>English</span>
+                </button>
+            </div>
+        </div>
+    </footer>
 
     <script>
-        const burgerMenu = document.getElementById("burger-menu");
-        const mobileNav = document.getElementById("mobile-nav");
+        // Language switching functionality
+        const langCsBtn = document.getElementById("lang-cs");
+        const langEnBtn = document.getElementById("lang-en");
+        const langCsFooterBtn = document.getElementById("lang-cs-footer");
+        const langEnFooterBtn = document.getElementById("lang-en-footer");
 
-        // Toggle burger menu
-        burgerMenu.addEventListener("click", () => {
-            burgerMenu.classList.toggle("active");
-            mobileNav.classList.toggle("hidden");
-        });
-
-        // Load translations
-        async function loadTranslations(lang) {
-            const response = await fetch("lang.json");
-            const translations = await response.json();
+        function changeLanguage(lang) {
+            // Simulate language change by changing text content (real implementation would load from JSON)
             const elements = document.querySelectorAll("[data-lang]");
-            elements.forEach(el => {
+
+            elements.forEach((el) => {
                 const key = el.getAttribute("data-lang");
-                if (translations[lang][key]) {
-                    el.textContent = translations[lang][key];
+                if (lang === "en") {
+                    el.textContent = translations.en[key] || el.textContent;
+                } else {
+                    el.textContent = translations.cs[key] || el.textContent;
                 }
             });
         }
 
-        // Set language
-        function setLanguage(lang) {
-            localStorage.setItem("lang", lang);
-            loadTranslations(lang);
-        }
+        // Language switch event listeners
+        langCsBtn.addEventListener("click", () => changeLanguage("cs"));
+        langEnBtn.addEventListener("click", () => changeLanguage("en"));
+        langCsFooterBtn.addEventListener("click", () => changeLanguage("cs"));
+        langEnFooterBtn.addEventListener("click", () => changeLanguage("en"));
 
-        // Detect default language
-        const defaultLang = localStorage.getItem("lang") || (navigator.language.startsWith("cs") ? "cs" : "en");
-        setLanguage(defaultLang);
+        // Dummy translations (you can replace with actual JSON loading)
+        const translations = {
+            cs: {
+                "hero-title": "Rychlý a spolehlivý webhosting",
+                "hero-subtitle": "Vaše webové stránky na dosah ruky s Hostio.",
+                "hero-button": "Zjistit více",
+                "features-title": "Proč si vybrat Hostio?",
+                "feature1-title": "Spolehlivé servery",
+                "feature1-desc": "99,9% dostupnost díky moderní infrastruktuře.",
+                "feature2-title": "Zabezpečení",
+                "feature2-desc": "Vaše data jsou v bezpečí díky špičkovému šifrování.",
+                "feature3-title": "Podpora 24/7",
+                "feature3-desc": "Náš tým je tu pro vás kdykoliv.",
+                "about-title": "O nás",
+                "about-desc": "Jsme tým odborníků, kteří se specializují na poskytování kvalitního a spolehlivého webhostingu. Naším cílem je nabídnout služby, které jsou rychlé, bezpečné a dostupné pro každého.",
+                "partners-title": "Naši partneři",
+                "partners-desc": "Spolupracujeme s předními technologickými firmami a poskytovateli služeb, abychom vám poskytli nejlepší hostingové řešení.",
+                "pricing-title": "Ceník",
+                "pricing-basic": "Základní",
+                "pricing-basic-price": "99 Kč / měsíc",
+                "pricing-basic-desc": "Základní hosting pro malé weby.",
+                "pricing-standard": "Standard",
+                "pricing-standard-price": "199 Kč / měsíc",
+                "pricing-standard-desc": "Pro střední weby s většími nároky.",
+                "pricing-premium": "Premium",
+                "pricing-premium-price": "299 Kč / měsíc",
+                "pricing-premium-desc": "Pro náročné projekty s vysokou návštěvností."
+            },
+            en: {
+                "hero-title": "Fast and reliable web hosting",
+                "hero-subtitle": "Your websites at your fingertips with Hostio.",
+                "hero-button": "Learn More",
+                "features-title": "Why choose Hostio?",
+                "feature1-title": "Reliable Servers",
+                "feature1-desc": "99.9% uptime with modern infrastructure.",
+                "feature2-title": "Security",
+                "feature2-desc": "Your data is safe with top-notch encryption.",
+                "feature3-title": "24/7 Support",
+                "feature3-desc": "Our team is here for you anytime.",
+                "about-title": "About Us",
+                "about-desc": "We are a team of experts specializing in providing high-quality and reliable web hosting. Our goal is to offer services that are fast, secure, and accessible to everyone.",
+                "partners-title": "Our Partners",
+                "partners-desc": "We collaborate with leading tech companies and service providers to offer you the best hosting solutions.",
+                "pricing-title": "Pricing",
+                "pricing-basic": "Basic",
+                "pricing-basic-price": "$5 / month",
+                "pricing-basic-desc": "Basic hosting for small websites.",
+                "pricing-standard": "Standard",
+                "pricing-standard-price": "$10 / month",
+                "pricing-standard-desc": "For medium-sized websites with higher demands.",
+                "pricing-premium": "Premium",
+                "pricing-premium-price": "$15 / month",
+                "pricing-premium-desc": "For demanding projects with high traffic."
+            }
+        };
 
-        document.getElementById("lang-cs").addEventListener("click", () => setLanguage("cs"));
-        document.getElementById("lang-en").addEventListener("click", () => setLanguage("en"));
+        // Initial language load
+        changeLanguage("cs");
     </script>
 </body>
 </html>
