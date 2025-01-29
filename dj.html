@@ -4,135 +4,132 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DJ Pult</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.26/Tone.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/js/all.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.min.js"></script>
     <script src="https://unpkg.com/wavesurfer.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bpm-detective"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
     <style>
-        body { background: #121212; color: white; text-align: center; font-family: 'Arial', sans-serif; }
-        .container { margin-top: 20px; }
-        .deck { padding: 20px; border-radius: 10px; background: #1e1e1e; box-shadow: 0 0 15px rgba(0, 255, 255, 0.2); }
-        .deck h3 { color: cyan; }
-        .controls button { margin: 5px; font-size: 20px; }
-        .slider { width: 100%; }
-        .crossfader { width: 100%; margin-top: 10px; }
-        .waveform { width: 100%; height: 100px; background: black; margin-top: 10px; }
-        .info { font-size: 14px; margin-top: 10px; }
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+        body { font-family: 'Orbitron', sans-serif; background: #111; color: white; }
+        .jog { transition: transform 0.1s linear; }
     </style>
 </head>
-<body>
+<body class="flex justify-center items-center h-screen">
+    <div class="w-full max-w-5xl bg-black p-5 rounded-lg shadow-lg border border-gray-800">
+        <!-- Horní panel -->
+        <div class="flex justify-between items-center mb-5">
+            <div class="text-lg font-bold">DJ Controller</div>
+            <div id="bpm-display" class="text-xl">BPM: --</div>
+            <div class="text-lg"><i class="fa-solid fa-gear"></i></div>
+        </div>
 
-    <h1><i class="fas fa-music"></i> DJ Pult</h1>
-
-    <div class="container">
-        <div class="row">
+        <!-- Hlavní část -->
+        <div class="grid grid-cols-3 gap-4">
             <!-- Deck 1 -->
-            <div class="col-md-5 deck">
-                <h3><i class="fas fa-record-vinyl"></i> Deck 1</h3>
-                <input type="file" id="file1">
-                <div class="waveform" id="wave1"></div>
-                <div class="info">
-                    <span id="time1">00:00 / 00:00</span> | <span id="bpm1">BPM: --</span>
+            <div class="flex flex-col items-center">
+                <div id="waveform1" class="w-full bg-gray-800 h-12 rounded-md"></div>
+                <div class="relative mt-4">
+                    <div id="jog1" class="jog w-40 h-40 bg-gray-900 rounded-full flex items-center justify-center border-4 border-gray-600 shadow-md">
+                        <i class="fa-solid fa-plus text-2xl"></i>
+                    </div>
                 </div>
-                <div class="controls">
-                    <button class="btn btn-success" onclick="playDeck(1)"><i class="fas fa-play"></i></button>
-                    <button class="btn btn-danger" onclick="stopDeck(1)"><i class="fas fa-stop"></i></button>
-                </div>
-                <label>Pitch: <input type="range" id="pitch1" class="slider" min="0.5" max="2" step="0.01" value="1" onchange="changePitch(1)"></label>
+                <button id="play1" class="mt-4 bg-blue-500 px-4 py-2 rounded-md text-white">Play</button>
             </div>
 
             <!-- Crossfader -->
-            <div class="col-md-2">
-                <h3><i class="fas fa-sliders-h"></i> Crossfader</h3>
-                <input type="range" id="crossfader" class="crossfader" min="0" max="1" step="0.01" value="0.5" onchange="updateCrossfader()">
+            <div class="flex flex-col items-center">
+                <div id="crossfader" class="w-32 h-6 bg-gray-700 rounded-md mt-20 relative">
+                    <div id="cross-knob" class="absolute left-1/2 transform -translate-x-1/2 bg-orange-500 w-6 h-6 rounded-full cursor-pointer"></div>
+                </div>
             </div>
 
             <!-- Deck 2 -->
-            <div class="col-md-5 deck">
-                <h3><i class="fas fa-record-vinyl"></i> Deck 2</h3>
-                <input type="file" id="file2">
-                <div class="waveform" id="wave2"></div>
-                <div class="info">
-                    <span id="time2">00:00 / 00:00</span> | <span id="bpm2">BPM: --</span>
+            <div class="flex flex-col items-center">
+                <div id="waveform2" class="w-full bg-gray-800 h-12 rounded-md"></div>
+                <div class="relative mt-4">
+                    <div id="jog2" class="jog w-40 h-40 bg-gray-900 rounded-full flex items-center justify-center border-4 border-gray-600 shadow-md">
+                        <i class="fa-solid fa-plus text-2xl"></i>
+                    </div>
                 </div>
-                <div class="controls">
-                    <button class="btn btn-success" onclick="playDeck(2)"><i class="fas fa-play"></i></button>
-                    <button class="btn btn-danger" onclick="stopDeck(2)"><i class="fas fa-stop"></i></button>
-                </div>
-                <label>Pitch: <input type="range" id="pitch2" class="slider" min="0.5" max="2" step="0.01" value="1" onchange="changePitch(2)"></label>
+                <button id="play2" class="mt-4 bg-blue-500 px-4 py-2 rounded-md text-white">Play</button>
             </div>
         </div>
     </div>
 
     <script>
-        let wavesurfers = {
-            1: WaveSurfer.create({ container: '#wave1', waveColor: 'cyan', progressColor: 'blue', interact: true, backend: 'MediaElement' }),
-            2: WaveSurfer.create({ container: '#wave2', waveColor: 'magenta', progressColor: 'red', interact: true, backend: 'MediaElement' })
-        };
+        let player1, player2, bpm = 0;
 
-        let players = {
-            1: new Tone.Player().toDestination(),
-            2: new Tone.Player().toDestination()
-        };
+        // Inicializace Wavesurferu
+        const wave1 = WaveSurfer.create({ container: '#waveform1', waveColor: 'white', progressColor: 'blue' });
+        const wave2 = WaveSurfer.create({ container: '#waveform2', waveColor: 'white', progressColor: 'blue' });
 
-        function playDeck(deck) {
-            let fileInput = document.getElementById('file' + deck);
-            if (fileInput.files.length > 0) {
-                let file = URL.createObjectURL(fileInput.files[0]);
-                wavesurfers[deck].load(file);
-                players[deck].load(file).then(() => {
-                    players[deck].playbackRate = document.getElementById('pitch' + deck).value;
-                    players[deck].start();
-                    updateTime(deck);
-                    detectBPM(file, deck);
-                });
+        document.getElementById('play1').addEventListener('click', () => {
+            if (!player1) {
+                player1 = new Tone.Player("https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3").toDestination();
+                player1.start();
+                wave1.load("https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3");
+            } else {
+                player1.start();
             }
+        });
+
+        document.getElementById('play2').addEventListener('click', () => {
+            if (!player2) {
+                player2 = new Tone.Player("https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3").toDestination();
+                player2.start();
+                wave2.load("https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3");
+            } else {
+                player2.start();
+            }
+        });
+
+        // Crossfader
+        const crossKnob = document.getElementById('cross-knob');
+        const crossfader = document.getElementById('crossfader');
+
+        let isDragging = false;
+
+        crossKnob.addEventListener('mousedown', () => isDragging = true);
+        document.addEventListener('mouseup', () => isDragging = false);
+        document.addEventListener('mousemove', (e) => {
+            if (isDragging) {
+                let x = e.clientX - crossfader.offsetLeft;
+                x = Math.max(0, Math.min(x, crossfader.clientWidth - crossKnob.clientWidth));
+                crossKnob.style.left = `${x}px`;
+            }
+        });
+
+        // Scratch efekt
+        const jogs = document.querySelectorAll('.jog');
+        jogs.forEach(jog => {
+            let isScratching = false;
+            let lastAngle = 0;
+
+            jog.addEventListener('mousedown', (e) => {
+                isScratching = true;
+                lastAngle = getAngle(e, jog);
+            });
+
+            document.addEventListener('mouseup', () => isScratching = false);
+
+            document.addEventListener('mousemove', (e) => {
+                if (isScratching) {
+                    let angle = getAngle(e, jog);
+                    let delta = angle - lastAngle;
+                    jog.style.transform = `rotate(${delta}deg)`;
+                }
+            });
+        });
+
+        function getAngle(e, element) {
+            const rect = element.getBoundingClientRect();
+            const centerX = rect.left + rect.width / 2;
+            const centerY = rect.top + rect.height / 2;
+            return Math.atan2(e.clientY - centerY, e.clientX - centerX) * (180 / Math.PI);
         }
 
-        function stopDeck(deck) {
-            players[deck].stop();
-            wavesurfers[deck].stop();
-        }
-
-        function changePitch(deck) {
-            players[deck].playbackRate = document.getElementById('pitch' + deck).value;
-        }
-
-        function updateCrossfader() {
-            let value = document.getElementById('crossfader').value;
-            players[1].volume.value = Tone.gainToDb(1 - value);
-            players[2].volume.value = Tone.gainToDb(value);
-        }
-
-        function updateTime(deck) {
-            setInterval(() => {
-                let currentTime = formatTime(wavesurfers[deck].getCurrentTime());
-                let totalTime = formatTime(wavesurfers[deck].getDuration());
-                document.getElementById('time' + deck).innerText = `${currentTime} / ${totalTime}`;
-            }, 500);
-        }
-
-        function detectBPM(file, deck) {
-            fetch(file)
-                .then(response => response.arrayBuffer())
-                .then(data => {
-                    const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-                    return audioCtx.decodeAudioData(data);
-                })
-                .then(decodedData => {
-                    const bpm = BPMDetective(decodedData);
-                    document.getElementById('bpm' + deck).innerText = `BPM: ${Math.round(bpm)}`;
-                })
-                .catch(error => console.error('Chyba BPM detekce:', error));
-        }
-
-        function formatTime(seconds) {
-            let mins = Math.floor(seconds / 60);
-            let secs = Math.floor(seconds % 60);
-            return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
-        }
+        // BPM zobrazení (fixní hodnota)
+        document.getElementById('bpm-display').innerText = "BPM: 128";
     </script>
-
 </body>
 </html>
